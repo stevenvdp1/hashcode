@@ -1,26 +1,31 @@
 class Car:
     def addRide(self, i):
-        self.ritten.append(i) 
+        self.ritten.append(i.ride_id) 
+        self.x = i.x_end
+        self.y = i.y_end
 
     def __init__(self,x,y):
         self.x = int(x)
         self.y = int(y)
         self.ritten = []
 
-    
-
 class Ride:
-    def __init__(self,ride_id, x_start,y_start,x_end,y_end, start_t, end_t):
-        self.ride_id = int(ride_id)
-        self.x_start = int(x_start)
-        self.y_start = int(y_start)
-        self.x_end = int(x_end)
-        self.y_end = int(y_end)
-        self.start_t = int(start_t)
-        self.end_t = int(end_t)
+    def __init__(self,r_id, x_s,y_s,x_e,y_e, t_s, t_e):
+        self.ride_id = int(r_id)
+        self.x_start = int(x_s)
+        self.y_start = int(y_s)
+        self.x_end = int(x_e)
+        self.y_end = int(y_e)
+        self.start_t = int(t_s)
+        self.end_t = int(t_e)
+        self.ride_length = abs(self.x_start-self.x_end)+abs(self.y_start-self.y_end)
 
 
-f = open("e_high_bonus.in", "r")
+f = open("b_should_be_easy.in", "r")
+# f = open("c_no_hurry.in", "r")
+# f = open("d_metropolis.in", "r")
+# f = open("e_high_bonus.in", "r")
+
 g = f.readline().split()
 
 row = int(g[0])
@@ -42,14 +47,11 @@ for x in range(rid):
 
 rides = sorted(rides, key=lambda start: start.start_t)
 
-for x in range (rid):
-    print(rides[x].start_t)
-
 for x in range(veh):
-    cars[x].addRide(rides[x].ride_id)
-    print(cars[x].ritten)
+    cars[x].addRide(rides[0])
+    del rides[0]
 
-outp = open("output_e.in", "w")
+outp = open("output_d.in", "w")
 for x in range(veh):
     outp.write("1 "+str(cars[x].ritten[0])+"\n")
 outp.close()
