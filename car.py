@@ -23,6 +23,7 @@ class Car:
                     closestdist = abs(self.x-posRides[x].x_start)+abs(self.y-posRides[x].y_start)
                     closest = posRides[x]
             self.addRide(closest)
+            return closest.ride_id
 
     def __init__(self,x,y):
         self.x = int(x)
@@ -42,11 +43,11 @@ class Ride:
         self.end_t = int(t_e)
         self.ride_length = abs(self.x_start-self.x_end)+abs(self.y_start-self.y_end)
 
-
-f = open("b_should_be_easy.in", "r")
+# f = open("a_example.in", "r")
+# f = open("b_should_be_easy.in", "r")
 # f = open("c_no_hurry.in", "r")
 # f = open("d_metropolis.in", "r")
-# f = open("e_high_bonus.in", "r")
+f = open("e_high_bonus.in", "r")
 
 g = f.readline().split()
 
@@ -67,30 +68,35 @@ for x in range(rid):
     ride = f.readline().split()
     rides.append(Ride(x, ride[0],ride[1],ride[2],ride[3],ride[4],ride[5]))
 
-rides = sorted(rides, key=lambda start: start.start_t)
+rides = sorted(rides, key=lambda start: start.start_t + start.ride_length)
 
 for x in range(veh):
-    cars[x].addRide(rides[0])
-    del rides[0]
+    for y in range(len(rides)):
+        if(abs(cars[x].x-rides[y].x_start)+abs(cars[x].y-rides[y].y_start)+rides[y].ride_length<rides[y].end_t):
+            cars[x].addRide(rides[y])
+            del rides[y]
+            break
 
 for x in range(len(cars)):
-    while cars[x].distance_travelled<(ste-1000):
-        cars[x].findRide(rides)
-        print(cars[x].ritten)
-    for r in range(len(cars[x].ritten)):
+    d = True
+    print(x)
+    while d:
+        r = cars[x].findRide(rides)
+        print(d)
         for m in range(len(rides)):
-            if(rides[m].ride_id == cars[x].ritten[r]):
+            if(rides[m].ride_id == r):
                 del rides[m]
+                d=1
                 break
+        d = d+1
+        if(d>3):
+            d=False
 
-    
-
-print(cars[0].ritten)
-outp = open("output_d.in", "w")
+outp = open("output_e.in", "w")
 for x in range(veh):
-    outp.write(str(len(cars[x].ritten))+" ")
-    for r in range(cars[x].ritten):
-        outp.write(cars[x].ritten[r])
+    outp.write(str(len(cars[x].ritten)))
+    for r in range(len(cars[x].ritten)):
+        outp.write(" "+str(cars[x].ritten[r]))
     outp.write("\n")
 outp.close()
 
