@@ -1,13 +1,35 @@
 class Car:
     def addRide(self, i):
-        self.ritten.append(i.ride_id) 
+        self.ritten.append(i.ride_id)
+        self.distance_travelled = self.distance_travelled + abs(self.x-i.x_start)+abs(self.y-i.y_start)
+        self.x = i.x_start
+        self.y = i.y_start
+        if(self.distance_travelled < i.start_t):
+            self.distance_travelled= i.start_t
+        self.distance_travelled = self.distance_travelled + abs(self.x - i.x_end)+abs(self.y-i.y_end)
         self.x = i.x_end
         self.y = i.y_end
+
+    def findRide(self, rides):
+        posRides = []
+        for x in range(len(rides)):
+            if(self.distance_travelled + rides[x].ride_length + abs(self.x-rides[x].x_start)+abs(self.y-rides[x].y_start)<rides[x].end_t):
+                posRides.append(rides[x])
+        if(posRides):
+            closest = posRides[0]
+            closestdist = 1000000
+            for x in range(len(posRides)):
+                if(abs(self.x-posRides[x].x_start)+abs(self.y-posRides[x].y_start)<closestdist):
+                    closestdist = abs(self.x-posRides[x].x_start)+abs(self.y-posRides[x].y_start)
+                    closest = posRides[x]
+            self.addRide(closest)
 
     def __init__(self,x,y):
         self.x = int(x)
         self.y = int(y)
         self.ritten = []
+        self.distance_travelled = 0
+
 
 class Ride:
     def __init__(self,r_id, x_s,y_s,x_e,y_e, t_s, t_e):
@@ -51,9 +73,25 @@ for x in range(veh):
     cars[x].addRide(rides[0])
     del rides[0]
 
+for x in range(len(cars)):
+    while cars[x].distance_travelled<(ste-1000):
+        cars[x].findRide(rides)
+        print(cars[x].ritten)
+    for r in range(len(cars[x].ritten)):
+        for m in range(len(rides)):
+            if(rides[m].ride_id == cars[x].ritten[r]):
+                del rides[m]
+                break
+
+    
+
+print(cars[0].ritten)
 outp = open("output_d.in", "w")
 for x in range(veh):
-    outp.write("1 "+str(cars[x].ritten[0])+"\n")
+    outp.write(str(len(cars[x].ritten))+" ")
+    for r in range(cars[x].ritten):
+        outp.write(cars[x].ritten[r])
+    outp.write("\n")
 outp.close()
 
 
