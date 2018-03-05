@@ -43,11 +43,11 @@ class Ride:
         self.end_t = int(t_e)
         self.ride_length = abs(self.x_start-self.x_end)+abs(self.y_start-self.y_end)
 
-# f = open("a_example.in", "r")
-# f = open("b_should_be_easy.in", "r")
-# f = open("c_no_hurry.in", "r")
-# f = open("d_metropolis.in", "r")
-f = open("e_high_bonus.in", "r")
+# f = open("input/a_example.in", "r")
+# f = open("input/b_should_be_easy.in", "r")
+# f = open("input/c_no_hurry.in", "r")
+# f = open("input/d_metropolis.in", "r")
+f = open("input/e_high_bonus.in", "r")
 
 g = f.readline().split()
 
@@ -91,8 +91,12 @@ for x in range(len(cars)):
         d = d+1
         if(d>3):
             d=False
-
-outp = open("output_e.in", "w")
+            
+# outp = open("output/output_a.in", "w")
+# outp = open("output/output_b.in", "w")
+# outp = open("output/output_c.in", "w")
+# outp = open("output/output_d.in", "w")
+outp = open("output/output_e.in", "w")
 for x in range(veh):
     outp.write(str(len(cars[x].ritten)))
     for r in range(len(cars[x].ritten)):
