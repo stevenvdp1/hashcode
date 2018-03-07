@@ -31,7 +31,6 @@ class Car:
         self.ritten = []
         self.distance_travelled = 0
 
-
 class Ride:
     def __init__(self,r_id, x_s,y_s,x_e,y_e, t_s, t_e):
         self.ride_id = int(r_id)

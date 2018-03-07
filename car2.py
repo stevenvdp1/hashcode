@@ -1,4 +1,5 @@
 class Ride:
+<<<<<<< Updated upstream
   def __init__(self,r_id, x_s,y_s,x_e,y_e, t_s, t_e):
     self.ride_id = int(r_id)
     self.x_start = int(x_s)
@@ -60,3 +61,50 @@ def main():
 
 if __name__ == "__main__":
   main()
+=======
+
+    def __init__(self,i,xs,ys,xe,ye,ts,te):
+        self.ride_id = int(i)
+        self.x_start = int(xs)
+        self.y_start = int(ys)
+        self.x_end = int(xe)
+        self.y_end = int(ye)
+        self.start_t = int(ts)
+        self.end_t = int(te)
+        self.length = abs(self.x_start-self.x_end)+abs(self.y_start-self.y_end)
+
+class Car:
+    completedRides = []
+    
+    def __init__(self, a, b):
+        self.x = int(a)
+        self.y = int(b)
+
+
+
+f = open("a_example.in", "r")
+# f = open("b_should_be_easy.in", "r")
+# f = open("c_no_hurry.in", "r")
+# f = open("d_metropolis.in", "r")
+# f = open("e_high_bonus.in", "r")
+
+g = f.readline().split()
+
+R = int(g[0])
+C = int(g[1])
+F = int(g[2])
+N = int(g[3])
+B = int(g[4])
+T = int(g[5])
+
+cars = []
+rides = []
+
+for x in range(F):
+    cars.append(Car(0,0))
+
+for x in range(N):
+    ride = f.readline().split()
+    rides.append(Ride(x, ride[0],ride[1],ride[2],ride[3],ride[4],ride[5])) 
+
+>>>>>>> Stashed changes
