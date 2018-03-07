@@ -12,44 +12,15 @@ class Ride:
 class Car:
   def distanceToStart(self, ride):
     return abs(self.x-ride.x_start)+abs(self.y-ride.y_start)
-
-  def getAvailableRides(self, rides):
-    availableRides = []
-    for r in range(len(rides)):
-      ride = rides[r]
-      if(self.distance_travelled+ self.distanceToStart(ride)+ride.ride_length<=ride.end_t):
-        availableRides.append(ride)
-    return availableRides
-
-  def getAmountNextRides(self, ride, totalRides):
-    for r in range(len(totalRides)):
-      pass
-
-  def findRide(self, totalRides):
-    score = self.distance_travelled+self.bonus
-    totalRides = self.getAvailableRides(totalRides)
-    bestRideID = None
-    numberOfNextRides = 0
-    for r in range(len(totalRides)):
-      ride = totalRides[r]
-      otherRides = totalRides
-      for o in range(len(otherRides)):
-        if(ride.ride_id == otherRides[o].ride_id):
-          del otherRides[o]
-          break
-      # self.getAmountNextRides(ride, otherRides)
-
-      # if(self.getAmountNextRides(ride, totalRides)):
-
-      # if(distance_travelled+distanceToStart <= ride.start_t)
-      #   self.bonus = self.bonus + bon
+  
+  def findRide(self, rides):
+    pass
 
   def __init__(self,x,y):
         self.x = int(x)
         self.y = int(y)
         self.rideIdArray = []
         self.distance_travelled = 0
-        self.bonus = 0
 
 
 
@@ -85,10 +56,6 @@ def initCars():
 def main():
   rides = initRides()
   cars = initCars()
-  for c in range(len(cars)):
-    print("Car: " +str(c))
-    cars[c].findRide(rides)
-    print("\n")
 
 
 if __name__ == "__main__":
