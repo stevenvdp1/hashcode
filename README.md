@@ -4,4 +4,10 @@
 
 ## Online qualifier
 
+[Version 1:](https://github.com/stevenvdp1/hashcode/blob/master/car.py)
+
+score = 11.883.530
+
+[Version 2:](https://github.com/stevenvdp1/hashcode/blob/master/car2.py)
+
 Score = 48.113.370
