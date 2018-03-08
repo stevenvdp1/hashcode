@@ -78,13 +78,16 @@ T = int(g[5])
 cars = []
 rides = []
 
+#car array
 for x in range(F):
   cars.append(Car(0,0))
 
+#ride array
 for x in range(N):
   ride = f.readline().split()
   rides.append(Ride(x, ride[0],ride[1],ride[2],ride[3],ride[4],ride[5]))
 
+#give each car ride with bonus + closest endpoint
 for c in range(F):
   print(c)
   bestRide = cars[c].findRideWithBonus(rides, T)
@@ -92,6 +95,7 @@ for c in range(F):
     rides[bestRide].available = False
     cars[c].completedRides.append(bestRide)
 
+#give each car rides with bonus until no more available
 for c in range(F):
   print(c)
   while(True):
@@ -102,6 +106,7 @@ for c in range(F):
     else:
       break
 
+#give each car rides until no more available
 for c in range(F):
   print(c)
   while(True):
