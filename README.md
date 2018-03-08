@@ -12,4 +12,4 @@ score = 11.883.530
 
 Score = 48.113.370
 
-![alt text](https://github.com/stevenvdp1/hashcode/blob/master/img/score.jpg "Score")
+![alt text](https://github.com/stevenvdp1/hashcode/blob/master/img/score.JPG "Score")
