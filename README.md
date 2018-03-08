@@ -11,3 +11,5 @@ score = 11.883.530
 [Version 2:](https://github.com/stevenvdp1/hashcode/blob/master/car2.py)
 
 Score = 48.113.370
+
+![alt text](https://github.com/stevenvdp1/hashcode/blob/master/img/score.jpg "Score")
